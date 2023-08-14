@@ -9,6 +9,7 @@ def select_word(filename):
     return random_word
     # take in a file and return a word in list, selected at random
 
+
 def display_secret_board(word, guess_letters):
     chosen_word = ''
     for letter in word: 
@@ -18,6 +19,7 @@ def display_secret_board(word, guess_letters):
             chosen_word += '_'
     return chosen_word
     # this function will display as underscores or a letter that were guessed correctly
+
 
 def user_guess(counter):
     while counter > 0:
@@ -30,6 +32,19 @@ def user_guess(counter):
             return guess
     # take in user input and compare it the word, will return if it was wrong or the correct letter
 
+
+def display_game_over():
+    print('Game over!')
+    replay = input('Play again? (y/n): ')
+    return replay.lower() == 'y'
+
+
+def restart_game():
+    replay = display_game_over()
+    if replay:
+        play_game()
+    else:
+        exit()
 
 
 def play_game():
@@ -50,6 +65,7 @@ def play_game():
         print('Better luck next time 🤓')
     print(random_word)
     print(display_secret_board(random_word, guess_letters))
+    restart_game()
 
 
 if __name__ == "__main__":
